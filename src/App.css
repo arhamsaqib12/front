@@ -1,0 +1,190 @@
+.App {
+  text-align: center;
+}
+
+body {
+  font-family: "Syne", sans-serif;
+  font-optical-sizing: auto;
+
+}
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+/* index.css or App.css or another global CSS file */
+body, html {
+  height: 100%;
+  margin: 0;
+  background-color: black;
+}
+
+
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+.sidebar {
+  height: 100vh;
+  overflow-y: auto;
+  position: fixed;
+}
+
+.main-content {
+  margin-left: 0;
+  margin-top: 70px; /* Adjust based on your header */
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    margin-left: 25%;
+  }
+}
+
+@media (min-width: 992px) {
+  .main-content {
+    margin-left: 20%;
+  }
+}
+/* Custom CSS for sticky positioning */
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh; /* Full viewport height */
+  overflow-y: auto; /* Scroll if content overflows */
+}
+
+.thirdbar {
+  position: sticky;
+  top: 0;
+  height: 100vh; /* Full viewport height */
+  overflow-y: auto; /* Scroll if content overflows */
+}
+
+.nav-link {
+  padding: 10px 15px;
+}
+.full-hieght{
+  height: 100vh
+}
+.nav-link .bi {
+  margin-right: 10px;
+}
+
+.tweet-list {
+  margin-top: 20px;
+}
+
+.card {
+  border: none;
+}
+.logo-img {
+  width: 450px;
+}
+
+@media (max-width: 768px) {
+  .logo-img {
+    width: 100px;
+  }
+}
+.custom-modal {
+  background-color: rgba(173, 216, 230, 0.2); /* light blue background with low opacity */
+}
+
+.custom-modal .modal-content {
+  background-color: #000; /* black background */
+  color: #fff; /* white text */
+}
+
+.custom-modal .form-control {
+  background-color: #000; /* black input boxes */
+  color: #fff; /* white text in input boxes */
+  border: .5px solid #444; /* subtle border for better visibility */
+}
+/* IndexPage.css */
+
+@media (max-width: 768px) {
+  .custom-modal .modal-body {
+    background-color: rgba(173, 216, 230, 0.2);
+  }
+
+  .custom-modal .form-control {
+    background-color: black;
+    color: white;
+    
+  }
+
+  .custom-modal ::placeholder {
+    color: grey;
+  }
+
+
+
+  .fw-bold.text-light.mb-3:nth-of-type(2) {
+    font-size: 30px !important;
+  }
+}
+
+.custom-modal .form-control::placeholder {
+  color: #888; /* grey placeholder text */
+}
+
+textarea.form-control {
+  resize: none;
+}
+
+
+
+.btn-outline-primary:hover {
+  background-color: #fff;
+  color: #000;
+}
+body {
+  background: black;
+}
+.btn-primary {
+  background-color: #1da1f2;
+  border-color: #1da1f2;
+}
+
+.btn-primary:hover {
+  background-color: #0d8ae5;
+  border-color: #0d8ae5;
+}
+
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
