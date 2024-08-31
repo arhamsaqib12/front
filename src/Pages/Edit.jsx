@@ -65,7 +65,7 @@ function EditModal({ show, handleClose }) {
       headerPic: formData.headerPic
     };
 
-    fetch(`http://localhost:5000/api/posts/user/edit/${userId}`, {
+    fetch(`https://twit-backend-production.up.railway.app/api/posts/user/edit/${userId}`, {
       method: 'PUT',
       headers: {
         'Authorization': `${localStorage.getItem('token')}`,
