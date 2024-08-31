@@ -78,7 +78,7 @@ const CreatePostModal = ({ show, handleClose }) => {
 
       const hashtags = extractHashtags(data.postText);
       if (hashtags.length > 0) {
-        const hashtagResponse = await fetch('https://twit-backend-production.up.railway.app/api/hashtag/', {
+        const hashtagResponse = await fetch('http://localhost:5000/api/hashtag/', {
           method: "POST",
           headers: {
             "Authorization": `${token}`,
