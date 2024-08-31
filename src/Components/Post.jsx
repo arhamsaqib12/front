@@ -5,7 +5,7 @@ import imageCompression from 'browser-image-compression';
 const CreatePostModal = ({ show, handleClose }) => {
   const [data, setData] = useState({ postText: '', media: null });
   const [error, setError] = useState('');
-const userId - localStorage.getItem("userid")
+
   // Convert file to base64
   const getBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -90,7 +90,7 @@ const userId - localStorage.getItem("userid")
             "Authorization": `${token}`,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ text: hashtags , userId : userId }),
+          body: JSON.stringify({ text: hashtags , userId : localStorage.getItem("userId") }),
         });
 
         if (!hashtagResponse.ok) {
