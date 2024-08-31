@@ -6,7 +6,7 @@ const CreatePostModal = ({ show, handleClose }) => {
   const [data, setData] = useState({ postText: '', media: null });
   const [error, setError] = useState('');
 
-  // Function to convert file to base64
+  // Convert file to base64
   const getBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -16,6 +16,7 @@ const CreatePostModal = ({ show, handleClose }) => {
     });
   };
 
+  // Extract hashtags from text
   const extractHashtags = (text) => {
     const hashtagRegex = /#(\w+)/g;
     const hashtags = [];
@@ -26,23 +27,29 @@ const CreatePostModal = ({ show, handleClose }) => {
     return hashtags;
   };
 
-  // Function to handle file compression
+  // Handle file compression
   const handleFileCompression = async (file) => {
     try {
+      if (file.size > 5 * 1024 * 1024) { // Limit file size to 5MB
+        setError('File size exceeds the 5MB limit.');
+        return file;
+      }
+
       const options = {
-        maxSizeMB: 0.5,          // Maximum size in MB
-        maxWidthOrHeight: 1024, // Maximum width or height in pixels
-        useWebWorker: true,     // Use web worker for compression
+        maxSizeMB: 0.5,
+        maxWidthOrHeight: 1024,
+        useWebWorker: true,
       };
 
       const compressedFile = await imageCompression(file, options);
       return compressedFile;
     } catch (error) {
       console.error('Error compressing file:', error);
-      return file; // Fallback to original file if compression fails
+      return file;
     }
   };
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
@@ -52,7 +59,6 @@ const CreatePostModal = ({ show, handleClose }) => {
     }
 
     try {
-      // Handle file compression if media exists
       const mediaBase64 = data.media
         ? await getBase64(await handleFileCompression(data.media))
         : null;
@@ -61,7 +67,7 @@ const CreatePostModal = ({ show, handleClose }) => {
         media: mediaBase64,
       };
 
-      console.log("Payload to be sent:", postData); // Log payload for debugging
+      console.log("Payload to be sent:", postData);
 
       const response = await fetch('https://twit-backend-production.up.railway.app/api/posts', {
         method: "POST",
@@ -78,7 +84,7 @@ const CreatePostModal = ({ show, handleClose }) => {
 
       const hashtags = extractHashtags(data.postText);
       if (hashtags.length > 0) {
-        const hashtagResponse = await fetch('http://localhost:5000/api/hashtag/', {
+        const hashtagResponse = await fetch('https://twit-backend-production.up.railway.app/api/hashtag/', {
           method: "POST",
           headers: {
             "Authorization": `${token}`,
@@ -181,3 +187,4 @@ const CreatePostModal = ({ show, handleClose }) => {
 };
 
 export default CreatePostModal;
+
